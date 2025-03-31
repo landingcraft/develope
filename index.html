@@ -500,116 +500,121 @@
     
     /* Hero Section */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 5rem;
-    }
-    
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    
-    .hero-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, var(--color-background), rgba(18, 18, 18, 0.9), var(--color-background));
-    }
-    
-    .hero-pattern {
-      position: absolute;
-      inset: 0;
-      opacity: 0.1;
-      background-image: url('');
-      background-size: cover;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 48rem;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.025em;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .hero-image-container {
-      position: relative;
-      margin-top: 4rem;
-      max-width: 64rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero-image {
-      width: 50%;
-      height: auto;
-      border-radius: var(--border-radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-    }
-    
-    .hero-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-      border-radius: var(--border-radius-xl);
-    }
-    
-    .hero-image-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1.5rem;
-      z-index: 20;
-    }
-    
-    .hero-decoration-circle {
-      position: absolute;
-      width: 6rem;
-      height: 6rem;
-      background-color: var(--color-primary);
-      border-radius: 50%;
-      bottom: -1.5rem;
-      right: -1.5rem;
-      display: none;
-    }
-    
-    .hero-decoration-border {
-      position: absolute;
-      width: 3rem;
-      height: 3rem;
-      border: 1px solid var(--color-primary);
-      border-radius: 50%;
-      top: -1.5rem;
-      left: -1.5rem;
-      display: none;
-    }
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;     /* Centra el contenido verticalmente */
+  padding-top: 5rem;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--color-background), rgba(18, 18, 18, 0.9), var(--color-background));
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: url('');
+  background-size: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajustes a la imagen y su contenedor */
+.hero-image-container {
+  position: relative;
+  width: 100%; /* Esto asegura que el contenedor ocupe todo el ancho */
+  max-width: 70rem; /* Puedes ajustar el tamaño máximo que quieras */
+  display: flex;
+  justify-content: center; /* Centra la imagen dentro de su contenedor */
+  margin-top: 4rem;
+  padding: 0 1rem; /* Añadí padding opcional para agregar espacio si es necesario */
+}
+
+.hero-image {
+  width: 100%; /* La imagen ocupa todo el contenedor */
+  max-width: 100%; /* Asegura que la imagen no sea más grande que su contenedor */
+  height: auto;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  border-radius: var(--border-radius-xl);
+}
+
+.hero-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 20;
+}
+
+.hero-decoration-circle {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  display: none;
+}
+
+.hero-decoration-border {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  top: -1.5rem;
+  left: -1.5rem;
+  display: none;
+}
     
     /* Services Section */
     .services-card {
@@ -1090,7 +1095,6 @@
           <img src="ejemplo_landing_page.png" alt="Landing Page Example" class="hero-image">
           <div class="hero-image-overlay"></div>
           <div class="hero-image-caption">
-            <p class="text-sm text-muted mb-2">Ejemplo de landing page para una tienda naturista</p>
             <h3 class="text-xl font-medium">NaturVida</h3>
           </div>
         </div>
