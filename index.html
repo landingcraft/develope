@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>develope | Creación de Landing Pages Profesionales</title>
+  <meta name="description" content="Creamos landing pages personalizadas con integración de Google Maps y WhatsApp Business para pequeños negocios.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Reset y variables */
+    :root {
+      --color-background: #121212;
+      --color-background-alt: #1A1A1A;
+      --color-card: #242424;
+      --color-foreground: #ffffff;
+      --color-foreground-muted: rgba(255, 255, 255, 0.7);
+      --color-primary: #FF6B35;
+      --color-primary-hover: #FF8C5A;
+      --color-primary-light: rgba(255, 107, 53, 0.1);
+      --color-border: rgba(255, 255, 255, 0.1);
+      --color-whatsapp: #25D366;
+      --color-whatsapp-hover: #20BD5A;
+      --border-radius: 0.5rem;
+      --border-radius-xl: 1rem;
+      --border-radius-full: 9999px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s ease;
+      --font-sans: 'Inter', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-foreground);
+      background-color: var(--color-background);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: -0.025em;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    /* Utilidades */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .font-medium {
+      font-weight: 500;
+    }
+    
+    .font-bold {
+      font-weight: 700;
+    }
+    
+    .font-light {
+      font-weight: 300;
+    }
+    
+    .font-serif {
+      font-family: var(--font-serif);
+    }
+    
+    .italic {
+      font-style: italic;
+    }
+    
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    
+    .mb-16 {
+      margin-bottom: 4rem;
+    }
+    
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    
+    .mt-16 {
+      margin-top: 4rem;
+    }
+    
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    
+    .py-12 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    
+    .py-20 {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    
+    .pt-8 {
+      padding-top: 2rem;
+    }
+    
+    .pt-20 {
+      padding-top: 5rem;
+    }
+    
+    .p-6 {
+      padding: 1.5rem;
+    }
+    
+    .p-8 {
+      padding: 2rem;
+    }
+    
+    .p-12 {
+      padding: 3rem;
+    }
+    
+    .rounded-full {
+      border-radius: var(--border-radius-full);
+    }
+    
+    .rounded-xl {
+      border-radius: var(--border-radius-xl);
+    }
+    
+    .rounded-2xl {
+      border-radius: calc(var(--border-radius-xl) * 1.5);
+    }
+    
+    .shadow-lg {
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .shadow-xl {
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .text-white {
+      color: var(--color-foreground);
+    }
+    
+    .text-muted {
+      color: var(--color-foreground-muted);
+    }
+    
+    .text-primary {
+      color: var(--color-primary);
+    }
+    
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .text-xl {
+      font-size: 1.25rem;
+    }
+    
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+    
+    .text-3xl {
+      font-size: 1.875rem;
+    }
+    
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+    
+    .text-6xl {
+      font-size: 3.75rem;
+    }
+    
+    .leading-tight {
+      line-height: 1.25;
+    }
+    
+    .tracking-tight {
+      letter-spacing: -0.025em;
+    }
+    
+    .w-full {
+      width: 100%;
+    }
+    
+    .max-w-xs {
+      max-width: 20rem;
+    }
+    
+    .max-w-md {
+      max-width: 28rem;
+    }
+    
+    .max-w-2xl {
+      max-width: 42rem;
+    }
+    
+    .max-w-4xl {
+      max-width: 56rem;
+    }
+    
+    .max-w-5xl {
+      max-width: 64rem;
+    }
+    
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-full);
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-foreground);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background-color: var(--color-foreground);
+      color: var(--color-primary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-foreground);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .btn-whatsapp {
+      background-color: var(--color-whatsapp);
+      color: var(--color-foreground);
+    }
+    
+    .btn-whatsapp:hover {
+      background-color: var(--color-whatsapp-hover);
+    }
+    
+    /* Formularios */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--color-foreground);
+      background-color: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-xl);
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      border-color: var(--color-primary);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+    }
+    
+    textarea.form-control {
+      height: auto;
+    }
+    
+    /* Layout */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .flex {
+      display: flex;
+    }
+    
+    .flex-col {
+      flex-direction: column;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .items-start {
+      align-items: flex-start;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    .justify-between {
+      justify-content: space-between;
+    }
+    
+    .space-x-4 > * + * {
+      margin-left: 1rem;
+    }
+    
+    .space-x-8 > * + * {
+      margin-left: 2rem;
+    }
+    
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+    
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+    
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+    
+    .space-y-8 > * + * {
+      margin-top: 2rem;
+    }
+    
+    .gap-4 {
+      gap: 1rem;
+    }
+    
+    .gap-8 {
+      gap: 2rem;
+    }
+    
+    .gap-12 {
+      gap: 3rem;
+    }
+    
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: rgba(18, 18, 18, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+    
+    .logo-accent {
+      color: var(--color-primary);
+    }
+    
+    .nav-link {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.8);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      color: var(--color-foreground);
+    }
+    
+    .mobile-menu-btn {
+      background: none;
+      border: none;
+      color: var(--color-foreground);
+      cursor: pointer;
+      display: block;
+    }
+    
+    .mobile-menu {
+      display: none;
+      background-color: var(--color-background-alt);
+      padding: 1rem 0;
+    }
+    
+    .mobile-menu.active {
+      display: block;
+    }
+    
+    .mobile-menu-link {
+      display: block;
+      padding: 0.5rem 0;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .mobile-menu-link:hover {
+      color: var(--color-foreground);
+    }
+    
+    .desktop-nav {
+      display: none;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--color-background), rgba(18, 18, 18, 0.9), var(--color-background));
+    }
+    
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url('');
+      background-size: cover;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 48rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-image-container {
+      position: relative;
+      margin-top: 4rem;
+      max-width: 64rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-image {
+      width: 50%;
+      height: auto;
+      border-radius: var(--border-radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      border-radius: var(--border-radius-xl);
+    }
+    
+    .hero-image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      z-index: 20;
+    }
+    
+    .hero-decoration-circle {
+      position: absolute;
+      width: 6rem;
+      height: 6rem;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      display: none;
+    }
+    
+    .hero-decoration-border {
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 50%;
+      top: -1.5rem;
+      left: -1.5rem;
+      display: none;
+    }
+    
+    /* Services Section */
+    .services-card {
+      background-color: var(--color-card);
+      border-radius: var(--border-radius-xl);
+      padding: 2rem;
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+    
+    .services-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 107, 53, 0.3);
+    }
+    
+    .service-icon {
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Benefits Section */
+    .benefit-icon-container {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background-color: var(--color-primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-primary);
+    }
+    
+    /* Process Section */
+    .process-number {
+      font-size: 3.75rem;
+      font-weight: 700;
+      color: rgba(255, 107, 53, 0.1);
+      margin-bottom: 1rem;
+    }
+    
+    .process-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 0;
+      transform: translateX(50%);
+      color: rgba(255, 107, 53, 0.3);
+      display: none;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-container {
+      max-width: 56rem;
+      margin: 0 auto;
+      position: relative;
+      height: 200px;
+      margin-bottom: 10rem;
+
+    }
+    
+    
+    .testimonial-quote {
+      position: absolute;
+      top: -2.5rem;
+      left: -2.5rem;
+      font-size: 6rem;
+      color: rgba(255, 107, 53, 0.2);
+      font-family: var(--font-serif);
+    }
+    
+    .testimonials-card {
+      background-color: var(--color-card);
+      border-radius: var(--border-radius-xl);
+      padding: 3rem 2rem;
+      border: 1px solid var(--color-border);
+    }
+    
+    .testimonial {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(10px); /* Pequeño desplazamiento inicial */
+        transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        height: 200px;
+
+    }
+
+    .testimonial.active {
+        opacity: 1;
+        transform: translateY(0); /* Vuelve a su posición original */
+        z-index: 2;
+    }
+    
+    .testimonial-text {
+      font-size: 1.25rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-author-img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    
+    .testimonial-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 13rem; /* Ajusta según necesidad */
+  gap: 0.5rem; /* Espacio entre los dots */
+  min-height: 50px;
+}
+    
+    .testimonial-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin: 0 0.25rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .testimonial-dot.active {
+      background-color: var(--color-primary);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background-color: var(--color-primary);
+    }
+    
+    /* Contact Section */
+    .contact-icon-container {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--color-primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      color: var(--color-primary);
+    }
+    
+    .social-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--color-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.7);
+      transition: var(--transition);
+    }
+    
+    .social-icon:hover {
+      color: var(--color-foreground);
+      background-color: rgba(255, 107, 53, 0.2);
+    }
+    
+    .whatsapp-card {
+      background-color: var(--color-card);
+      border-radius: var(--border-radius-xl);
+      padding: 1.5rem;
+      border: 1px solid var(--color-border);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--color-background);
+      border-top: 1px solid var(--color-border);
+    }
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive */
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .mobile-menu-btn {
+        display: none;
+      }
+      
+      .desktop-nav {
+        display: flex;
+      }
+      
+      .hero-decoration-circle,
+      .hero-decoration-border {
+        display: block;
+      }
+      
+      .process-arrow {
+        display: block;
+      }
+      
+      .testimonial-text {
+        font-size: 1.5rem;
+      }
+      
+      .col-span-2 {
+        grid-column: span 2;
+      }
+    }
+
+    /* Estilos para el Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: #1A1A1A;
+  margin: 5% auto;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.modal-header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.ejemplos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .ejemplos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ejemplo-card {
+  background-color: #242424;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.ejemplo-card:hover {
+  border-color: rgba(255, 107, 53, 0.3);
+  transform: translateY(-5px);
+}
+
+.ejemplo-imagen {
+  position: relative;
+}
+
+.ejemplo-imagen img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ejemplo-categoria {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(255, 107, 53, 0.8);
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.ejemplo-info {
+  padding: 15px;
+}
+
+.ejemplo-info h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.ejemplo-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.btn-detalles {
+  width: 100%;
+  padding: 10px;
+  background-color: #242424;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-detalles:hover {
+  background-color: rgba(255, 107, 53, 0.1);
+  border-color: #FF6B35;
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-cerrar {
+  background-color: #FF6B35;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-cerrar:hover {
+  background-color: #FF8C5A;
+}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="py-4 flex justify-between items-center">
+        <div class="logo">
+          deve<span class="logo-accent">lope</span>
+        </div>
+        
+        <nav class="desktop-nav space-x-8">
+          <a href="#servicios" class="nav-link">Servicios</a>
+          <a href="#beneficios" class="nav-link">Beneficios</a>
+          <a href="#testimonios" class="nav-link">Testimonios</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+          <a href="#contacto" class="btn btn-primary">Comienza Ahora</a>
+        </nav>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars fa-lg"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="container space-y-4">
+        <a href="#servicios" class="mobile-menu-link">Servicios</a>
+        <a href="#beneficios" class="mobile-menu-link">Beneficios</a>
+        <a href="#testimonios" class="mobile-menu-link">Testimonios</a>
+        <a href="#contacto" class="mobile-menu-link">Contacto</a>
+        <a href="#contacto" class="btn btn-primary w-full">Comienza Ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-pattern"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content fade-in">
+        <h1 class="hero-title">
+          Transforma tu negocio con una <span class="text-primary">Landing Page</span> personalizada
+        </h1>
+        <p class="hero-subtitle font-serif italic">
+          Landing Pages optimizadas + Google Maps + Integración con WhatsApp
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn-primary btn-lg">
+            Comienza Ahora
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#" class="btn btn-outline btn-lg">
+            Ver Ejemplos
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-image-container fade-in">
+        <div class="hero-decoration-circle"></div>
+        <div class="hero-decoration-border"></div>
+        
+        <div class="relative">
+          <img src="ejemplo_landing_page.png" alt="Landing Page Example" class="hero-image">
+          <div class="hero-image-overlay"></div>
+          <div class="hero-image-caption">
+            <p class="text-sm text-muted mb-2">Ejemplo de landing page para una tienda naturista</p>
+            <h3 class="text-xl font-medium">NaturVida</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-[#1A1A1A]" id="servicios" style="background-color: var(--color-background-alt);">
+    <div class="container">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-3xl font-bold mb-4">
+          Nuestros <span class="text-primary">Servicios</span>
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Ofrecemos soluciones digitales completas para que tu negocio destaque en el mundo online
+          y conecte de manera efectiva con tus clientes potenciales.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 grid-cols-3 gap-8 fade-in">
+        <!-- Service 1 -->
+        <div class="services-card">
+          <div class="service-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-4">Landing Pages Personalizadas</h3>
+          <p class="text-muted">Diseñamos landing pages únicas y optimizadas que capturan la esencia de tu negocio y convierten visitantes en clientes.</p>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="services-card">
+          <div class="service-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-4">Optimización de Google Maps</h3>
+          <p class="text-muted">Mejoramos tu presencia local para que los clientes te encuentren fácilmente cuando busquen servicios como el tuyo.</p>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="services-card">
+          <div class="service-icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-4">Integración con WhatsApp</h3>
+          <p class="text-muted">Conectamos tu landing page con WhatsApp Business para facilitar la comunicación directa con tus clientes potenciales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20" id="beneficios">
+    <div class="container">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-3xl font-bold mb-4">
+          Beneficios <span class="text-primary">Clave</span>
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Descubre cómo nuestras soluciones pueden transformar la presencia digital de tu negocio
+          y generar resultados tangibles.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 grid-cols-3 gap-8 max-w-5xl mx-auto fade-in">
+        <!-- Benefit 1 -->
+        <div class="text-center">
+          <div class="benefit-icon-container mx-auto">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Mayor Visibilidad Online</h3>
+          <p class="text-muted">Destaca entre la competencia con una presencia web profesional y atractiva.</p>
+        </div>
+        
+        <!-- Benefit 2 -->
+        <div class="text-center">
+          <div class="benefit-icon-container mx-auto">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Conexión Directa con Clientes</h3>
+          <p class="text-muted">Facilita la comunicación instantánea a través de WhatsApp Business.</p>
+        </div>
+        
+        <!-- Benefit 3 -->
+        <div class="text-center">
+          <div class="benefit-icon-container mx-auto">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Incremento de Ventas</h3>
+          <p class="text-muted">Convierte visitantes en clientes con páginas optimizadas para conversión.</p>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center fade-in">
+        <a href="#contacto" class="btn btn-primary btn-lg">
+          Descubre Más Beneficios
+          <i class="fas fa-chevron-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 bg-[#1A1A1A]" style="background-color: var(--color-background-alt);">
+    <div class="container">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-3xl font-bold mb-4">
+          Nuestro <span class="text-primary">Proceso</span>
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Un enfoque simple y efectivo para crear tu landing page perfecta
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 grid-cols-4 gap-8 max-w-5xl mx-auto fade-in">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="process-number">01</div>
+          <h3 class="text-xl font-medium mb-2">Consulta</h3>
+          <p class="text-muted">Entendemos tus necesidades y objetivos</p>
+          <div class="process-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="process-number">02</div>
+          <h3 class="text-xl font-medium mb-2">Diseño</h3>
+          <p class="text-muted">Creamos un diseño personalizado y atractivo</p>
+          <div class="process-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="relative">
+          <div class="process-number">03</div>
+          <h3 class="text-xl font-medium mb-2">Desarrollo</h3>
+          <p class="text-muted">Implementamos todas las funcionalidades</p>
+          <div class="process-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="relative">
+          <div class="process-number">04</div>
+          <h3 class="text-xl font-medium mb-2">Lanzamiento</h3>
+          <p class="text-muted">Tu landing page lista para convertir</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20" id="testimonios">
+    <div class="container">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-3xl font-bold mb-4">
+          Lo que dicen nuestros <span class="text-primary">Clientes</span>
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Historias reales de negocios que han transformado su presencia digital con nuestras soluciones
+        </p>
+      </div>
+      
+      <div class="testimonials-container fade-in">
+        <div class="testimonial-quote">"</div>
+        
+        <div class="testimonials-card">
+          <div class="testimonials-slider">
+            <!-- Testimonial 1 -->
+            <div class="testimonial active" data-index="0">
+              <p class="testimonial-text">
+                Nuestra landing page ha transformado completamente nuestro negocio. Las clientes aumentaron un 45% en el primer mes.
+              </p>
+              <div class="flex items-center">
+                <img src="maria_rodriguez_recomendacion.jpg" alt="María Rodríguez" class="testimonial-author-img">
+                <div>
+                  <p class="font-medium">María Rodríguez</p>
+                  <p class="text-muted text-sm">Café Artesanal Lumina</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial" data-index="1">
+              <p class="testimonial-text">
+                La integración con WhatsApp nos permitió conectar directamente con nuestros clientes. El servicio fue impecable y profesional.
+              </p>
+              <div class="flex items-center">
+                <img src="carlos_mendez_recomendacion.jpg" alt="Carlos Méndez" class="testimonial-author-img">
+                <div>
+                  <p class="font-medium">Carlos Méndez</p>
+                  <p class="text-muted text-sm">Taller de Bicicletas Vintage</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial" data-index="2">
+              <p class="testimonial-text">
+                Gracias a la optimización en Google Maps, nuestro tráfico en tienda 
+                <p class="testimonial-text">aumentó significativamente. Totalmente recomendado.
+              </p>
+              <div class="flex items-center">
+                <img src="laura_sanchez_recomendacion.jpeg" alt="Laura Sánchez" class="testimonial-author-img">
+                <div>
+                  <p class="font-medium">Laura Sánchez</p>
+                  <p class="text-muted text-sm">Tienda de Plantas Urbanas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-dots">
+            <button class="testimonial-dot active" data-index="0" aria-label="Ver testimonio 1"></button>
+            <button class="testimonial-dot" data-index="1" aria-label="Ver testimonio 2"></button>
+            <button class="testimonial-dot" data-index="2" aria-label="Ver testimonio 3"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 cta-section">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center fade-in">
+        <h2 class="text-3xl font-bold mb-6 text-white">
+          ¿Listo para transformar la presencia digital de tu negocio?
+        </h2>
+        <p class="text-white/90 text-xl mb-8 max-w-2xl mx-auto">
+          Comienza hoy mismo y lleva tu negocio al siguiente nivel con una landing page profesional y optimizada.
+        </p>
+        <a href="#contacto" class="btn btn-secondary btn-lg">
+          ¡Comienza Ahora!
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 bg-[#1A1A1A]" id="contacto" style="background-color: var(--color-background-alt);">
+    <div class="container">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-3xl font-bold mb-4">
+          <span class="text-primary">Contáctanos</span>
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          ¿Tienes preguntas o estás listo para comenzar? Estamos aquí para ayudarte.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 grid-cols-2 gap-12 max-w-5xl mx-auto fade-in">
+        <div>
+          <h3 class="text-xl font-medium mb-6">Envíanos un mensaje</h3>
+          <form class="space-y-4">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Nombre de tu Negocio">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="4" placeholder="¿Cómo podemos ayudarte?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full">Enviar Mensaje</button>
+          </form>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-medium mb-6">Información de contacto</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="contact-icon-container">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <p class="font-medium mb-1">Ubicación</p>
+                <p class="text-muted">Ciudad de México, México</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="contact-icon-container">
+                <i class="fas fa-comment"></i>
+              </div>
+              <div>
+                <p class="font-medium mb-1">Email</p>
+                <p class="text-muted">hola@develope.com</p>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <p class="font-medium mb-4">Síguenos</p>
+              <div class="flex space-x-4">
+                <a href="#" class="social-icon">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="mt-8 whatsapp-card">
+              <p class="font-medium mb-2">¿Prefieres hablar por WhatsApp?</p>
+              <p class="text-muted mb-4">Contáctanos directamente a través de WhatsApp para una respuesta rápida.</p>
+              <a href="https://wa.me/1234567890" class="btn btn-whatsapp w-full">
+                <i class="fab fa-whatsapp mr-2"></i>
+                Contactar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-12">
+    <div class="container">
+      <div class="grid grid-cols-1 grid-cols-4 gap-8 mb-8">
+        <div class="col-span-2">
+          <div class="flex items-center mb-4">
+            <span class="logo">deve<span class="logo-accent">lope</span></span>
+          </div>
+          <p class="text-muted max-w-md">
+            Creamos landing pages profesionales que convierten visitantes en clientes. 
+            Diseño minimalista, optimización SEO e integración con herramientas de marketing.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium mb-4">Enlaces</h3>
+          <ul class="space-y-2">
+            <li><a href="#servicios" class="text-muted hover:text-white">Servicios</a></li>
+            <li><a href="#beneficios" class="text-muted hover:text-white">Beneficios</a></li>
+            <li><a href="#testimonios" class="text-muted hover:text-white">Testimonios</a></li>
+            <li><a href="#contacto" class="text-muted hover:text-white">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium mb-4">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-muted hover:text-white">Términos y Condiciones</a></li>
+            <li><a href="#" class="text-muted hover:text-white">Política de Privacidad</a></li>
+            <li><a href="#" class="text-muted hover:text-white">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-white/50 text-sm mb-4 md:mb-0">
+          &copy; <script>document.write(new Date().getFullYear())</script> develope. Todos los derechos reservados.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-white/50 hover:text-white">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-white/50 hover:text-white">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-white/50 hover:text-white">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      
+      if (mobileMenu.classList.contains('active')) {
+        mobileMenuToggle.innerHTML = '<i class="fas fa-times fa-lg"></i>';
+      } else {
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars fa-lg"></i>';
+      }
+    });
+    
+    // Mobile Menu Links - Close menu when clicked
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars fa-lg"></i>';
+      });
+    });
+    
+    // Testimonials Carousel
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    let currentTestimonial = 0;
+    
+    function showTestimonial(index) {
+      testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+      });
+      testimonialDots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      testimonials[index].classList.add('active');
+      testimonialDots[index].classList.add('active');
+    }
+    
+    testimonialDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        currentTestimonial = index;
+        showTestimonial(currentTestimonial);
+      });
+    });
+    
+    // Auto rotate testimonials
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+    
+    // Fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFade() {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('load', checkFade);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+  <!-- Modal de Ejemplos -->
+<div id="ejemplosModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Ejemplos de Landing Pages</h3>
+        <button class="modal-close" onclick="cerrarModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="ejemplos-grid">
+          <!-- Ejemplo 1 -->
+          <div class="ejemplo-card">
+            <div class="ejemplo-imagen">
+              <img src="https://via.placeholder.com/600x400" alt="Café Lumina">
+              <div class="ejemplo-categoria">Cafetería</div>
+            </div>
+            <div class="ejemplo-info">
+              <h4>Café Lumina</h4>
+              <p>Landing page minimalista con integración de reservas y menú digital.</p>
+              <button class="btn-detalles">Ver Detalles</button>
+            </div>
+          </div>
+          
+          <!-- Ejemplo 2 -->
+          <div class="ejemplo-card">
+            <div class="ejemplo-imagen">
+              <img src="https://via.placeholder.com/600x400" alt="Estetica Dorian">
+              <div class="ejemplo-categoria">Belleza y Bienestar</div>
+            </div>
+            <div class="ejemplo-info">
+              <h4>Spa Serenity</h4>
+              <p>Diseño elegante con sistema de reserva de citas y galería de servicios.</p>
+              <button class="btn-detalles">Ver Detalles</button>
+            </div>
+          </div>
+          
+          <!-- Ejemplo 3 -->
+          <div class="ejemplo-card">
+            <div class="ejemplo-imagen">
+              <img src="https://via.placeholder.com/600x400" alt="Tech Solutions">
+              <div class="ejemplo-categoria">Tecnología</div>
+            </div>
+            <div class="ejemplo-info">
+              <h4>Tech Solutions</h4>
+              <p>Landing page corporativa con formulario de contacto y sección de servicios.</p>
+              <button class="btn-detalles">Ver Detalles</button>
+            </div>
+          </div>
+          
+          <!-- Ejemplo 4 -->
+          <div class="ejemplo-card">
+            <div class="ejemplo-imagen">
+              <img src="https://via.placeholder.com/600x400" alt="Organic Market">
+              <div class="ejemplo-categoria">Alimentación</div>
+            </div>
+            <div class="ejemplo-info">
+              <h4>Organic Market</h4>
+              <p>Diseño fresco con catálogo de productos e integración con WhatsApp.</p>
+              <button class="btn-detalles">Ver Detalles</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button class="btn-cerrar" onclick="cerrarModal()">Cerrar Galería</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    // Obtener el modal
+    const modal = document.getElementById('ejemplosModal');
+    
+    // Función para abrir el modal
+    function abrirModal() {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Evita el scroll en el fondo
+    }
+    
+    // Función para cerrar el modal
+    function cerrarModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restaura el scroll
+    }
+    
+    // Cerrar el modal si se hace clic fuera del contenido
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        cerrarModal();
+      }
+    }
+    
+    // Añadir evento al botón "Ver Ejemplos"
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnVerEjemplos = document.querySelector('.hero-buttons .btn-outline');
+      if (btnVerEjemplos) {
+        btnVerEjemplos.addEventListener('click', abrirModal);
+      }
+    });
+  </script>
+</body>
+</html>
