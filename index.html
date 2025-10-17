@@ -1,290 +1,308 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>STONKER | Preservación Patrimonial de Lujo</title>
-   <!-- Carga de Tailwind CSS -->
-   <script src="https://cdn.tailwindcss.com"></script>
-   <style>
-       /* Paleta de Colores y Tipografía (Inter, estilo Apple) */
-       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-       
-       :root {
-           --color-light: #FFFFFF;
-           --color-dark: #111827;
-           --color-gold: #B8860B;
-           --color-soft-gray: #F3F4F6;
-       }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONKER | Preservación Patrimonial de Lujo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* Paleta de Colores y Tipografía (Inter, estilo Apple) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-       body {
-           font-family: 'Inter', sans-serif;
-           background-color: var(--color-light);
-           color: var(--color-dark);
-           scroll-behavior: smooth;
-       }
+:root {
+--color-light: #FFFFFF;
+--color-dark: #111827;
+--color-gold: #B8860B;
+--color-soft-gray: #F3F4F6;
+}
 
-       /* Estilo del Header Fijo */
-       .fixed-header {
-           background-color: var(--color-light);
-           border-bottom: 1px solid #E5E7EB; 
-       }
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--color-light);
+color: var(--color-dark);
+scroll-behavior: smooth;
+}
 
-       /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
-       #pillars-carousel::-webkit-scrollbar { display: none; }
-       #pillars-carousel { scrollbar-width: none; }
+/* Estilo del Header Fijo */
+.fixed-header {
+background-color: var(--color-light);
+border-bottom: 1px solid #E5E7EB;
+}
 
-       /* Animación sutil de pulsación para el CTA flotante */
-       @keyframes pulse-slow {
-           0%, 100% { transform: scale(1); opacity: 1; }
-           50% { transform: scale(1.05); opacity: 0.95; }
-       }
-       .animate-pulse-slow {
-           animation: pulse-slow 3s infinite ease-in-out;
-       }
-   </style>
+/* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
+#pillars-carousel::-webkit-scrollbar { display: none; }
+#pillars-carousel { scrollbar-width: none; }
+
+/* Animación sutil de pulsación para el CTA flotante */
+@keyframes pulse-slow {
+0%, 100% { transform: scale(1); opacity: 1; }
+50% { transform: scale(1.05); opacity: 0.95; }
+}
+.animate-pulse-slow {
+animation: pulse-slow 3s infinite ease-in-out;
+}
+
+/* --- NUEVO CSS PARA VIDEO DE FONDO HERO --- */
+#inicio {
+/* Asegura que el contenido quede encima del video */
+position: relative;
+}
+
+#hero-video-bg {
+position: absolute;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: 0; /* Lo pone en el fondo del contenedor #inicio */
+transform: translate(-50%, -50%); /* Centra el video */
+object-fit: cover; /* Crucial: Asegura que cubra todo, como 'background-size: cover' */
+filter: brightness(90%); /* Mantiene el filtro que tenías */
+}
+
+/* Capa oscura (Overlay) para mejorar la lectura del texto */
+#inicio::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.2); /* Oscurece un poco el fondo */
+z-index: 1; /* Detrás del texto (z-index: 2) y encima del video (z-index: 0) */
+}
+
+.hero-content-wrapper {
+position: relative;
+z-index: 2; /* Asegura que el texto y botón estén en el frente */
+}
+/* --- FIN NUEVO CSS --- */
+</style>
 </head>
 <body class="pt-16">
-   
-   <!-- 1. FIXED HEADER (APPLE STYLE) -->
-   <header class="fixed-header fixed top-0 left-0 w-full z-50 h-16 flex items-center">
-       <div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start"> 
-           <div 
-               id="stonker-logo"
-               class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300" 
-               style="color: var(--color-dark);" 
-               aria-label="Ir al inicio"
-           >
-               STONKER
-           </div>
-       </div>
-   </header>
 
-   <!-- 2. HERO SECTION -->
-   <div 
-       id="inicio"
-       class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-24 pb-16" 
-       style="background-color: var(--color-light);"
-   >
-       <div 
-           class="absolute inset-0 bg-cover bg-center transition-all duration-500"
-           style="
-               /* Placeholder de fondo sin texto para evitar superposición */
-               background-image: url('https://placehold.co/1920x1080/F0F0F0/111827');
-               filter: brightness(90%); 
-               z-index: 0;
-           "
-           role="img"
-           aria-label="Simulación de video de pulido de superficies por un profesional de STONKER."
-       ></div>
-       
-       <div class="relative z-10 max-w-5xl mx-auto p-6">
-           <!-- Título conciso y discreto -->
-           <h1 class="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8 tracking-tighter font-black" style="color: var(--color-dark);">
-               PRESERVA TU PATRIMONIO.
-           </h1>
-           <a
-               href="#contacto"
-               class="
-                   text-white transition-all duration-300 font-extrabold rounded-full inline-block py-4 px-12 text-xl md:text-2xl 
-                   hover:opacity-90 shadow-xl shadow-amber-600/50 uppercase tracking-wider
-               "
-               style="background-color: var(--color-gold);"
-           >
-               INICIAR CONSULTA
-           </a>
-       </div>
-   </div>
+<header class="fixed-header fixed top-0 left-0 w-full z-50 h-16 flex items-center">
+<div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start">
+<div
+id="stonker-logo"
+class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300"
+style="color: var(--color-dark);"
+aria-label="Ir al inicio"
+>
+STONKER
+</div>
+</div>
+</header>
 
-   <!-- 3. AUTHORITY AND SOCIAL PROOF SECTION -->
-   <section class="py-24 md:py-40 border-b border-gray-200" style="background-color: var(--color-light);">
-       <div class="container mx-auto max-w-6xl px-4">
-           <h2 class="text-center text-sm md:text-base uppercase tracking-[0.3em] mb-14 text-gray-500 font-bold">
-               Confían en la Artesanía y Discreción de STONKER
-           </h2>
-           <div class="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-80">
-               <img src="https://placehold.co/120x30/FFFFFF/111827?text=Firma+Arquitectura" alt="Logo de Firma de Arquitectura de Lujo" class="h-6 md:h-10"/>
-               <img src="https://placehold.co/120x30/FFFFFF/111827?text=Desarrolladora+Premium" alt="Logo de Desarrolladora Inmobiliaria Premium" class="h-6 md:h-10"/>
-               <img src="https://placehold.co/120x30/FFFFFF/111827?text=Gestión+Patrimonial" alt="Logo de Gestión Patrimonial" class="h-6 md:h-10"/>
-               <img src="https://placehold.co/120x30/FFFFFF/111827?text=Luxury+Residences" alt="Logo de Luxury Residences" class="h-6 md:h-10 hidden sm:block"/>
-           </div>
-       </div>
-   </section>
+<div
+id="inicio"
+class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-24 pb-16"
+style="background-color: var(--color-light);"
+>
 
-   <!-- 4. VALUE PROPOSITION: APPLE CAROUSEL -->
-   <section class="py-24 md:py-40 overflow-hidden" style="background-color: var(--color-soft-gray);">
-       <h2 class="text-4xl md:text-6xl text-center mb-20 px-4 font-extrabold tracking-tight" style="color: var(--color-dark);">
-           Tecnología, No Mantenimiento.
-       </h2>
-       
-       <div class="relative">
-           <!-- Indicador de Deslizamiento (Solo en móvil) -->
-           <p class="md:hidden text-center text-xs text-gray-500 mb-6 flex justify-center items-center">
-               DESLIZA para ver nuestros 3 Pilares
-               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-           </p>
+<video
+id="hero-video-bg"
+autoplay
+loop
+muted
+playsinline
+poster="img/hero-poster.jpg"
+role="presentation"
+>
+<source src="videos/hero-video.mp4" type="video/mp4">
+</video>
+<div class="hero-content-wrapper max-w-5xl mx-auto p-6">
+<h1 class="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8 tracking-tighter font-black" style="color: var(--color-light);">
+PRESERVA TU PATRIMONIO.
+</h1>
+<a
+href="#contacto"
+class="
+text-white transition-all duration-300 font-extrabold rounded-full inline-block py-4 px-12 text-xl md:text-2xl
+hover:opacity-90 shadow-xl shadow-amber-600/50 uppercase tracking-wider
+"
+style="background-color: var(--color-gold);"
+>
+INICIAR CONSULTA
+</a>
+</div>
+</div>
 
-           <!-- Contenedor del Carrusel - Responsive Scroll Horizontal -->
-           <div 
-               id="pillars-carousel" 
-               class="flex overflow-x-scroll snap-x snap-mandatory transition-transform duration-300 pb-8"
-           >
-               <!-- Datos de los Pilares (Hardcoded en HTML) -->
-               <div 
-                   class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
-                   style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
-               >
-                   <!-- Icono SVG: Maestría Certificada (Shield) -->
-                   <svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                   <h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Maestría Certificada</h3>
-                   <p class="text-xl md:text-2xl text-gray-700 font-light mb-6">El Arte del Detalle: Estándares de Restauración Global.</p>
-                   <p class="text-sm md:text-base text-gray-500 font-light">Cada intervención es ejecutada por un maestro artesano certificado. Entendemos la geología, la historia y el valor de cada superficie, garantizando un resultado que honra su inversión.</p>
-               </div>
-               
-               <div 
-                   class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
-                   style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
-               >
-                   <!-- Icono SVG: Tecnología de Vanguardia (Aperture) -->
-                   <svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/><path d="M2.5 12h2.5"/><path d="M19 12h2.5"/><path d="M14.32 19.32l-1.7-1.7"/><path d="M9.68 4.68l1.7 1.7"/><path d="M19.32 9.68l-1.7 1.7"/><path d="M4.68 14.32l1.7-1.7"/></svg>
-                   <h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Tecnología de Vanguardia</h3>
-                   <p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Nanoprotección: Sellado que Desafía el Tiempo.</p>
-                   <p class="text-sm md:text-base text-gray-500 font-light">Utilizamos nanotecnología y selladores exclusivos que penetran a nivel molecular, restaurando el brillo original y ofreciendo una protección superior contra el tráfico, manchas y el tiempo.</p>
-               </div>
+<section class="py-24 md:py-40 border-b border-gray-200" style="background-color: var(--color-light);">
+<div class="container mx-auto max-w-6xl px-4">
+<h2 class="text-center text-sm md:text-base uppercase tracking-[0.3em] mb-14 text-gray-500 font-bold">
+Confían en la Artesanía y Discreción de STONKER
+</h2>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-80">
+<img src="https://placehold.co/120x30/FFFFFF/111827?text=Firma+Arquitectura" alt="Logo de Firma de Arquitectura de Lujo" class="h-6 md:h-10"/>
+<img src="https://placehold.co/120x30/FFFFFF/111827?text=Desarrolladora+Premium" alt="Logo de Desarrolladora Inmobiliaria Premium" class="h-6 md:h-10"/>
+<img src="https://placehold.co/120x30/FFFFFF/111827?text=Gestión+Patrimonial" alt="Logo de Gestión Patrimonial" class="h-6 md:h-10"/>
+<img src="https://placehold.co/120x30/FFFFFF/111827?text=Luxury+Residences" alt="Logo de Luxury Residences" class="h-6 md:h-10 hidden sm:block"/>
+</div>
+</div>
+</section>
 
-               <div 
-                   class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
-                   style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
-               >
-                   <!-- Icono SVG: Mantenimiento Predictivo (Activity) -->
-                   <svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                   <h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Mantenimiento Predictivo</h3>
-                   <p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Gestión Proactiva: Siempre en Estado Óptimo.</p>
-                   <p class="text-sm md:text-base text-gray-500 font-light">Implementamos planes de servicio que anticipan el desgaste, manteniendo la piedra en su estado óptimo. Es una gestión proactiva para extender la vida útil y el esplendor de su patrimonio.</p>
-               </div>
-           </div>
+<section class="py-24 md:py-40 overflow-hidden" style="background-color: var(--color-soft-gray);">
+<h2 class="text-4xl md:text-6xl text-center mb-20 px-4 font-extrabold tracking-tight" style="color: var(--color-dark);">
+Tecnología, No Mantenimiento.
+</h2>
 
-           <!-- Botones de Navegación laterales (escritorio) -->
-           <div class="absolute top-1/2 -translate-y-1/2 w-full hidden md:flex justify-between px-4">
-               <button 
-                   onclick="scrollCarousel(-1)" 
-                   aria-label="Anterior" 
-                   class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
-               >
-                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-               </button>
-               <button 
-                   onclick="scrollCarousel(1)" 
-                   aria-label="Siguiente" 
-                   class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
-               >
-                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-               </button>
-           </div>
-       </div>
-   </section>
+<div class="relative">
+<p class="md:hidden text-center text-xs text-gray-500 mb-6 flex justify-center items-center">
+DESLIZA para ver nuestros 3 Pilares
+<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+</p>
 
-   <!-- 5. GALLERY: BEFORE AND AFTER -->
-   <section class="py-24 md:py-40 border-t border-gray-200" style="background-color: var(--color-light);">
-       <div class="container mx-auto max-w-6xl px-4">
-           <h2 class="text-4xl md:text-6xl text-center mb-20 font-extrabold tracking-tighter" style="color: var(--color-dark);">
-               El Brillo es una Inversión.
-           </h2>
+<div
+id="pillars-carousel"
+class="flex overflow-x-scroll snap-x snap-mandatory transition-transform duration-300 pb-8"
+>
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Maestría Certificada</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">El Arte del Detalle: Estándares de Restauración Global.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Cada intervención es ejecutada por un maestro artesano certificado. Entendemos la geología, la historia y el valor de cada superficie, garantizando un resultado que honra su inversión.</p>
+</div>
 
-           <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-               <!-- Columna ANTES -->
-               <div class="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-red-500/50">
-                   <img 
-                       src="https://placehold.co/800x500/D4D4D4/111827" 
-                       alt="Superficie antes del tratamiento con STONKER" 
-                       class="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
-                   />
-                   <div class="absolute inset-0 bg-black/30 flex items-end p-8">
-                       <span class="bg-red-500 text-white text-xl font-black py-2 px-4 rounded-full">ANTES</span>
-                   </div>
-               </div>
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/><path d="M2.5 12h2.5"/><path d="M19 12h2.5"/><path d="M14.32 19.32l-1.7-1.7"/><path d="M9.68 4.68l1.7 1.7"/><path d="M19.32 9.68l-1.7 1.7"/><path d="M4.68 14.32l1.7-1.7"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Tecnología de Vanguardia</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Nanoprotección: Sellado que Desafía el Tiempo.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Utilizamos nanotecnología y selladores exclusivos que penetran a nivel molecular, restaurando el brillo original y ofreciendo una protección superior contra el tráfico, manchas y el tiempo.</p>
+</div>
 
-               <!-- Columna DESPUÉS -->
-               <div class="relative overflow-hidden rounded-3xl shadow-2xl" style="border-color: var(--color-gold);">
-                   <img 
-                       src="https://placehold.co/800x500/B8860B/FFFFFF" 
-                       alt="Superficie después del tratamiento con STONKER, con brillo espejo" 
-                       class="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
-                   />
-                   <div class="absolute inset-0 bg-black/30 flex items-end p-8">
-                       <span class="text-white text-xl font-black py-2 px-4 rounded-full" style="background-color: var(--color-gold);">DESPUÉS</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 95vw; flex-shrink: 0; margin: 0 10px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Mantenimiento Predictivo</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Gestión Proactiva: Siempre en Estado Óptimo.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Implementamos planes de servicio que anticipan el desgaste, manteniendo la piedra en su estado óptimo. Es una gestión proactiva para extender la vida útil y el esplendor de su patrimonio.</p>
+</div>
+</div>
 
-   <!-- 6. FINAL CTA SECTION -->
-   <section id="contacto" class="py-24 md:py-40" style="background-color: var(--color-light); border-top: 1px solid var(--color-gold);">
-       <div class="container mx-auto max-w-4xl text-center px-4">
-           <h2 class="text-4xl md:text-6xl mb-6 font-black tracking-tight" style="color: var(--color-dark);">
-               Su Próximo Paso.
-           </h2>
-           <p class="text-lg md:text-xl mb-12 text-gray-700 font-light max-w-2xl mx-auto">
-               Agende un diagnóstico personalizado para descubrir el verdadero potencial y la longevidad de sus superficies.
-           </p>
-           <a
-               href="https://wa.me/TUNUMERODEWHATSAPP"
-               class="
-                   text-white transition-all duration-300 font-extrabold rounded-full inline-block py-4 px-12 text-xl md:text-2xl 
-                   hover:opacity-90 shadow-xl shadow-amber-600/50 uppercase tracking-wider
-               "
-               style="background-color: var(--color-gold);"
-           >
-               INICIAR CONSULTA
-           </a>
-       </div>
-   </section>
+<div class="absolute top-1/2 -translate-y-1/2 w-full hidden md:flex justify-between px-4">
+<button
+onclick="scrollCarousel(-1)"
+aria-label="Anterior"
+class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
+>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+</button>
+<button
+onclick="scrollCarousel(1)"
+aria-label="Siguiente"
+class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
+>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+</button>
+</div>
+</div>
+</section>
 
-   <!-- 7. FOOTER -->
-   <footer class="py-10 bg-gray-50">
-       <div class="container mx-auto max-w-6xl px-4 text-center text-sm text-gray-500 font-light">
-           <p>© 2025 STONKER. Todos los derechos reservados. | Diseño y Preservación de Alto Valor.</p>
-       </div>
-   </footer>
+<section class="py-24 md:py-40 border-t border-gray-200" style="background-color: var(--color-light);">
+<div class="container mx-auto max-w-6xl px-4">
+<h2 class="text-4xl md:text-6xl text-center mb-20 font-extrabold tracking-tighter" style="color: var(--color-dark);">
+El Brillo es una Inversión.
+</h2>
 
-   <!-- 8. FLOATING WHATSAPP BUTTON -->
-   <a
-       href="https://wa.me/TUNUMERODEWHATSAPP" 
-       target="_blank"
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-50 p-4 rounded-full text-white shadow-2xl transition-all duration-300 hover:scale-105 animate-pulse-slow"
-       style="background-color: var(--color-gold); box-shadow: 0 4px 15px rgba(184, 134, 11, 0.6);"
-       aria-label="Contactar por WhatsApp"
-   >
-       <!-- Icono de WhatsApp/Chat -->
-       <svg class="w-7 h-7" style="color: var(--color-light);" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20.91A10 10 0 1 1 12 2C16.89 2 21 6.11 21 11c0 2.21-1.09 4.2-2.82 5.48L19 17l-3 3-5-3-3 3-3-3z"/></svg>
-   </a>
-   
-   <!-- Lógica JavaScript para el Carrusel y Scroll (Vanilla JS) -->
-   <script>
-       // Lógica de Smooth Scroll para el logo STONKER
-       document.getElementById('stonker-logo').addEventListener('click', () => {
-           window.scrollTo({ top: 0, behavior: 'smooth' });
-       });
+<div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+<div class="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-red-500/50">
+<img
+src="https://placehold.co/800x500/D4D4D4/111827"
+alt="Superficie antes del tratamiento con STONKER"
+class="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
+/>
+<div class="absolute inset-0 bg-black/30 flex items-end p-8">
+<span class="bg-red-500 text-white text-xl font-black py-2 px-4 rounded-full">ANTES</span>
+</div>
+</div>
 
-       // Lógica de Navegación del Carrusel
-       function scrollCarousel(direction) {
-           const carousel = document.getElementById('pillars-carousel');
-           if (!carousel) return;
+<div class="relative overflow-hidden rounded-3xl shadow-2xl" style="border-color: var(--color-gold);">
+<img
+src="https://placehold.co/800x500/B8860B/FFFFFF"
+alt="Superficie después del tratamiento con STONKER, con brillo espejo"
+class="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
 
-           // Encontramos el primer elemento del carrusel para medir el desplazamiento
-           const item = carousel.querySelector('.carousel-item');
-           if (!item) return;
+/>
+<div class="absolute inset-0 bg-black/30 flex items-end p-8">
+<span class="text-white text-xl font-black py-2 px-4 rounded-full" style="background-color: var(--color-gold);">DESPUÉS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-           // Usamos un 95% del ancho del viewport para el desplazamiento
-           const itemWidth = carousel.offsetWidth * 0.95; 
-           
-           carousel.scrollBy({ 
-               left: direction * itemWidth, 
-               behavior: 'smooth' 
-           });
-       }
-   </script>
+<section id="contacto" class="py-24 md:py-40" style="background-color: var(--color-light); border-top: 1px solid var(--color-gold);">
+<div class="container mx-auto max-w-4xl text-center px-4">
+<h2 class="text-4xl md:text-6xl mb-6 font-black tracking-tight" style="color: var(--color-dark);">
+Su Próximo Paso.
+</h2>
+<p class="text-lg md:text-xl mb-12 text-gray-700 font-light max-w-2xl mx-auto">
+Agende un diagnóstico personalizado para descubrir el verdadero potencial y la longevidad de sus superficies.
+</p>
+<a
+href="https://wa.me/TUNUMERODEWHATSAPP"
+class="
+text-white transition-all duration-300 font-extrabold rounded-full inline-block py-4 px-12 text-xl md:text-2xl
+hover:opacity-90 shadow-xl shadow-amber-600/50 uppercase tracking-wider
+"
+style="background-color: var(--color-gold);"
+>
+INICIAR CONSULTA
+</a>
+</div>
+</section>
+
+<footer class="py-10 bg-gray-50">
+<div class="container mx-auto max-w-6xl px-4 text-center text-sm text-gray-500 font-light">
+<p>© 2025 STONKER. Todos los derechos reservados. | Diseño y Preservación de Alto Valor.</p>
+</div>
+</footer>
+
+<a
+href="https://wa.me/TUNUMERODEWHATSAPP"
+target="_blank"
+rel="noopener noreferrer"
+class="fixed bottom-6 right-6 z-50 p-4 rounded-full text-white shadow-2xl transition-all duration-300 hover:scale-105 animate-pulse-slow"
+style="background-color: var(--color-gold); box-shadow: 0 4px 15px rgba(184, 134, 11, 0.6);"
+aria-label="Contactar por WhatsApp"
+>
+<svg class="w-7 h-7" style="color: var(--color-light);" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20.91A10 10 0 1 1 12 2C16.89 2 21 6.11 21 11c0 2.21-1.09 4.2-2.82 5.48L19 17l-3 3-5-3-3 3-3-3z"/></svg>
+</a>
+
+<script>
+// Lógica de Smooth Scroll para el logo STONKER
+document.getElementById('stonker-logo').addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Lógica de Navegación del Carrusel
+function scrollCarousel(direction) {
+const carousel = document.getElementById('pillars-carousel');
+if (!carousel) return;
+
+// Encontramos el primer elemento del carrusel para medir el desplazamiento
+const item = carousel.querySelector('.carousel-item');
+if (!item) return;
+
+// Usamos un 95% del ancho del viewport para el desplazamiento
+const itemWidth = carousel.offsetWidth * 0.95;
+
+carousel.scrollBy({
+left: direction * itemWidth,
+behavior: 'smooth'
+});
+}
+</script>
 </body>
 </html>
