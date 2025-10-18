@@ -28,6 +28,7 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   scroll-behavior: smooth;
+  /* El body no debe tener padding-top */
 }
 
 /* --- ESTILOS DE TEXTO PERSONALIZADOS --- */
@@ -76,7 +77,6 @@ section h2 {
 .transparent-header {
   background-color: transparent !important;
   border-bottom: none !important;
-  /* Cambiamos el color del logo a blanco para que se vea sobre el video oscuro */
 }
 
 .transparent-header #stonker-logo {
@@ -104,10 +104,9 @@ section h2 {
 /* --- CSS PARA VIDEO DE FONDO HERO --- */
 #inicio {
   position: relative;
-  /* Aseguramos que ocupe todo el alto del viewport */
-  height: 100vh;
-  /* Eliminamos el background-color para que no opaque el video */
+  /* Aseguramos que el fondo sea transparente para que el video se vea por debajo */
   background-color: transparent !important;
+  /* El h-screen de Tailwind en el HTML se encargará de la altura (100vh) */
 }
 
 #hero-video-bg {
@@ -127,7 +126,7 @@ section h2 {
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
-  /* Ya no necesita padding-top/bottom extras porque la sección hero ocupa el 100vh */
+  /* Espaciado del contenido para que no se pegue a los bordes */
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
@@ -136,8 +135,8 @@ section h2 {
 </head>
 <body>
 
-<header class="fixed-header fixed top-0 left-0 w-full z-50 h-16 flex items-center transparent-header">
-<div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start">
+<header class="fixed-header fixed top-0 left-0 w-full z-50 flex items-center transparent-header">
+<div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start pt-6 pb-4">
 <div
 id="stonker-logo"
 class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300"
@@ -151,8 +150,7 @@ STONKER
 
 <div
 id="inicio"
-class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pb-16"
-style="background-color: var(--color-light);"
+class="relative h-screen flex items-center justify-center text-center overflow-hidden"
 >
 
 <video
