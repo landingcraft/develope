@@ -68,8 +68,24 @@ section h2 {
 
 /* Estilo del Header Fijo */
 .fixed-header {
-  background-color: var(--color-light);
-  border-bottom: 1px solid #E5E7EB;
+  /* Añadimos una transición para que el cambio de color sea suave */
+  transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+}
+
+/* Estado transparente/inicial para la sección hero */
+.transparent-header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  /* Cambiamos el color del logo a blanco para que se vea sobre el video oscuro */
+}
+
+.transparent-header #stonker-logo {
+  color: var(--color-light) !important;
+}
+
+/* Cambiamos el color del logo a negro cuando el header es blanco */
+.fixed-header:not(.transparent-header) #stonker-logo {
+  color: var(--color-dark) !important;
 }
 
 /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
@@ -88,6 +104,10 @@ section h2 {
 /* --- CSS PARA VIDEO DE FONDO HERO --- */
 #inicio {
   position: relative;
+  /* Aseguramos que ocupe todo el alto del viewport */
+  height: 100vh;
+  /* Eliminamos el background-color para que no opaque el video */
+  background-color: transparent !important;
 }
 
 #hero-video-bg {
@@ -104,23 +124,19 @@ section h2 {
   filter: brightness(60%); /* Aumentamos el filtro para mejor lectura del texto blanco */
 }
 
-/* Capa oscura (Overlay) - Ahora el filtro del video se encarga de esto */
-/* #inicio::before { ... } */
-
-
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
-  /* Espaciado del contenido para que no se pegue a los bordes */
+  /* Ya no necesita padding-top/bottom extras porque la sección hero ocupa el 100vh */
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 /* --- FIN CSS VIDEO --- */
 </style>
 </head>
-<body class="pt-16">
+<body>
 
-<header class="fixed-header fixed top-0 left-0 w-full z-50 h-16 flex items-center">
+<header class="fixed-header fixed top-0 left-0 w-full z-50 h-16 flex items-center transparent-header">
 <div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start">
 <div
 id="stonker-logo"
@@ -135,7 +151,7 @@ STONKER
 
 <div
 id="inicio"
-class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-24 pb-16"
+class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pb-16"
 style="background-color: var(--color-light);"
 >
 
@@ -320,8 +336,36 @@ aria-label="Contactar por WhatsApp"
 <script>
 // Lógica de Smooth Scroll para el logo STONKER
 document.getElementById('stonker-logo').addEventListener('click', () => {
-window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Lógica para cambiar el color del header
+const header = document.querySelector('.fixed-header');
+// Usamos getBoundingClientRect para obtener la altura dinámica del hero
+const heroSection = document.getElementById('inicio');
+
+function toggleHeaderBackground() {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+  // Cambia a blanco cuando la parte inferior del hero sube de la ventana (o un poco antes)
+  // Utilizamos un valor de 50 para que el cambio se produzca antes de que el hero desaparezca.
+  if (heroBottom < 50) { 
+    // Si hemos bajado más allá del hero, hacemos el header blanco
+    header.classList.remove('transparent-header');
+    header.style.backgroundColor = 'var(--color-light)';
+    header.style.borderBottom = '1px solid #E5E7EB';
+  } else {
+    // Si estamos arriba, hacemos el header transparente
+    header.classList.add('transparent-header');
+    header.style.backgroundColor = 'transparent';
+    header.style.borderBottom = 'none';
+  }
+}
+
+// Ejecutar al cargar y al hacer scroll
+window.addEventListener('load', toggleHeaderBackground);
+window.addEventListener('scroll', toggleHeaderBackground);
+
 
 // Lógica de Navegación del Carrusel
 function scrollCarousel(direction) {
