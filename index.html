@@ -28,6 +28,9 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   scroll-behavior: smooth;
+  /* IMPORTANTE: Asegurarse de que el body no tiene márgenes por defecto */
+  margin: 0;
+  padding: 0;
 }
 
 /* --- ESTILOS DE TEXTO PERSONALIZADOS --- */
@@ -69,6 +72,9 @@ section h2 {
 /* Estilo del Header Fijo */
 .fixed-header {
   transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  /* IMPORTANTÍSIMO: Asegurarse de que el header no tenga un fondo por defecto en su estado inicial */
+  background-color: transparent; 
+  border-bottom: none;
 }
 
 /* Estado transparente/inicial para la sección hero */
@@ -102,31 +108,35 @@ section h2 {
 /* --- CSS PARA VIDEO DE FONDO HERO --- */
 #inicio {
   position: relative;
+  /* IMPORTANTE: Usamos '100vh' para que ocupe todo el alto del viewport */
+  height: 100vh; 
+  width: 100%; /* Aseguramos el 100% del ancho también */
   background-color: transparent !important;
   /* CRÍTICO: Asegura que no haya padding que empuje el video */
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden; /* Oculta cualquier parte del video que se desborde al estirarse */
 }
 
 #hero-video-bg {
   position: absolute;
-  /* CRÍTICO: Empezar desde el borde superior/izquierdo */
   top: 0; 
   left: 0; 
-  /* CRÍTICO: Ocupar el 100% del contenedor */
   width: 100%; 
   height: 100%;
   z-index: 0;
-  /* ELIMINADO: transform: translate(-50%, -50%); */
-  transform: none; 
-  object-fit: cover; /* CLAVE para eliminar las bandas negras */
+  transform: none; /* Asegurarse de que no hay ninguna transformación de centrado */
+  object-fit: cover; /* CLAVE para eliminar las bandas negras, estira el video para cubrir el contenedor */
   filter: brightness(60%); 
 }
 
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
-  /* Aumentado para que el contenido no quede detrás del logo/barra de estado */
+  /* Aumentado para que el contenido no quede detrás del logo/barra de estado,
+     se ajusta bien a unos 10rem (100px) en móvil */
   padding-top: 10rem;
   padding-bottom: 5rem;
 }
@@ -150,7 +160,7 @@ STONKER
 
 <div
 id="inicio"
-class="relative h-screen flex items-center justify-center text-center overflow-hidden"
+class="relative flex items-center justify-center text-center"
 >
 
 <video
@@ -341,4 +351,40 @@ document.getElementById('stonker-logo').addEventListener('click', () => {
 const header = document.querySelector('.fixed-header');
 const heroSection = document.getElementById('inicio');
 
-function
+function toggleHeaderBackground() {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+  if (heroBottom < 50) { 
+    header.classList.remove('transparent-header');
+    header.style.backgroundColor = 'var(--color-light)';
+    header.style.borderBottom = '1px solid #E5E7EB';
+  } else {
+    header.classList.add('transparent-header');
+    header.style.backgroundColor = 'transparent';
+    header.style.borderBottom = 'none';
+  }
+}
+
+// Ejecutar al cargar y al hacer scroll
+window.addEventListener('load', toggleHeaderBackground);
+window.addEventListener('scroll', toggleHeaderBackground);
+
+
+// Lógica de Navegación del Carrusel
+function scrollCarousel(direction) {
+const carousel = document.getElementById('pillars-carousel');
+if (!carousel) return;
+
+const item = carousel.querySelector('.carousel-item');
+if (!item) return;
+
+const itemWidth = carousel.offsetWidth * 0.90;
+
+carousel.scrollBy({
+left: direction * itemWidth + (direction * 32), 
+behavior: 'smooth'
+});
+}
+</script>
+</body>
+</html>
