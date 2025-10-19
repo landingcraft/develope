@@ -28,7 +28,6 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   scroll-behavior: smooth;
-  /* El body no debe tener padding-top */
 }
 
 /* --- ESTILOS DE TEXTO PERSONALIZADOS --- */
@@ -69,7 +68,6 @@ section h2 {
 
 /* Estilo del Header Fijo */
 .fixed-header {
-  /* Añadimos una transición para que el cambio de color sea suave */
   transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 }
 
@@ -104,30 +102,32 @@ section h2 {
 /* --- CSS PARA VIDEO DE FONDO HERO --- */
 #inicio {
   position: relative;
-  /* Aseguramos que el fondo sea transparente para que el video se vea por debajo */
   background-color: transparent !important;
-  /* El h-screen de Tailwind en el HTML se encargará de la altura (100vh) */
+  /* CRÍTICO: Asegura que no haya padding que empuje el video */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 #hero-video-bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  /* CRÍTICO: Empezar desde el borde superior/izquierdo */
+  top: 0; 
+  left: 0; 
+  /* CRÍTICO: Ocupar el 100% del contenedor */
+  width: 100%; 
+  height: 100%;
   z-index: 0;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  filter: brightness(60%); /* Aumentamos el filtro para mejor lectura del texto blanco */
+  /* ELIMINADO: transform: translate(-50%, -50%); */
+  transform: none; 
+  object-fit: cover; /* CLAVE para eliminar las bandas negras */
+  filter: brightness(60%); 
 }
 
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
-  /* Espaciado del contenido para que no se pegue a los bordes */
-  padding-top: 5rem;
+  /* Aumentado para que el contenido no quede detrás del logo/barra de estado */
+  padding-top: 10rem;
   padding-bottom: 5rem;
 }
 /* --- FIN CSS VIDEO --- */
@@ -339,49 +339,6 @@ document.getElementById('stonker-logo').addEventListener('click', () => {
 
 // Lógica para cambiar el color del header
 const header = document.querySelector('.fixed-header');
-// Usamos getBoundingClientRect para obtener la altura dinámica del hero
 const heroSection = document.getElementById('inicio');
 
-function toggleHeaderBackground() {
-  const heroBottom = heroSection.getBoundingClientRect().bottom;
-
-  // Cambia a blanco cuando la parte inferior del hero sube de la ventana (o un poco antes)
-  // Utilizamos un valor de 50 para que el cambio se produzca antes de que el hero desaparezca.
-  if (heroBottom < 50) { 
-    // Si hemos bajado más allá del hero, hacemos el header blanco
-    header.classList.remove('transparent-header');
-    header.style.backgroundColor = 'var(--color-light)';
-    header.style.borderBottom = '1px solid #E5E7EB';
-  } else {
-    // Si estamos arriba, hacemos el header transparente
-    header.classList.add('transparent-header');
-    header.style.backgroundColor = 'transparent';
-    header.style.borderBottom = 'none';
-  }
-}
-
-// Ejecutar al cargar y al hacer scroll
-window.addEventListener('load', toggleHeaderBackground);
-window.addEventListener('scroll', toggleHeaderBackground);
-
-
-// Lógica de Navegación del Carrusel
-function scrollCarousel(direction) {
-const carousel = document.getElementById('pillars-carousel');
-if (!carousel) return;
-
-// Encontramos el primer elemento del carrusel para medir el desplazamiento
-const item = carousel.querySelector('.carousel-item');
-if (!item) return;
-
-// Usamos el 90% del ancho del viewport (90vw) para el desplazamiento
-const itemWidth = carousel.offsetWidth * 0.90;
-
-carousel.scrollBy({
-left: direction * itemWidth + (direction * 32), // itemWidth + 32px de margen total (16px a cada lado)
-behavior: 'smooth'
-});
-}
-</script>
-</body>
-</html>
+function
