@@ -116,7 +116,7 @@ section h2 {
     border-bottom: 1px solid #E5E7EB !important;
 }
 
-/* ** ESTILOS DEFINITIVOS DEL LOGO ** */
+/* ** ESTILOS DEFINITIVOS DEL LOGO (DORADO FIJO) ** */
 
 /* Fijamos el color del logo a Dorado, eliminando la lógica dinámica de color
    Esto garantiza que siempre sea visible sobre el fondo oscuro y el fondo blanco. */
@@ -263,7 +263,70 @@ NUESTROS PRINCIPIOS DE VALOR
 </div>
 </div>
 </section>
+<section class="py-24 md:py-40 overflow-hidden" style="background-color: var(--color-soft-gray);">
+<h2 class="text-center mb-20 px-4 font-extrabold tracking-tight" style="color: var(--color-dark);">
+Tecnología En Mantenimiento
+</h2>
 
+<div class="relative">
+<p class="md:hidden text-center text-xs text-gray-500 mb-6 flex justify-center items-center">
+DESLIZA para ver nuestros 3 Pilares
+<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+</p>
+
+<div
+id="pillars-carousel"
+class="flex overflow-x-scroll snap-x snap-mandatory transition-transform duration-300 pb-8"
+>
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 90vw; flex-shrink: 0; margin: 0 16px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Maestría Certificada</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">El Arte del Detalle: Estándares de Restauración Global.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Cada intervención es ejecutada por un experto certificado. Entendemos la geología, la historia y el valor de cada superficie, garantizando un resultado que suma valor a su inversión.</p>
+</div>
+
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 90vw; flex-shrink: 0; margin: 0 16px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/><path d="M2.5 12h2.5"/><path d="M19 12h2.5"/><path d="M14.32 19.32l-1.7-1.7"/><path d="M9.68 4.68l1.7 1.7"/><path d="M19.32 9.68l-1.7 1.7"/><path d="M4.68 14.32l1.7-1.7"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Tecnología de Vanguardia</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Nanoprotección: Sellado que Desafía el Tiempo.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Utilizamos nanotecnología y selladores exclusivos que penetran a nivel molecular, restaurando el brillo original y ofreciendo una protección superior contra el tráfico, manchas y el tiempo.</p>
+</div>
+
+<div
+class="carousel-item p-8 md:p-16 rounded-3xl snap-center shadow-xl transition-all duration-500 bg-white hover:shadow-lg hover:shadow-gray-300"
+style="width: 90vw; flex-shrink: 0; margin: 0 16px; border: 1px solid var(--color-soft-gray); min-height: 400px;"
+>
+<svg class="mb-6 h-12 w-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+<h3 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tighter" style="color: var(--color-dark);">Mantenimiento Predictivo</h3>
+<p class="text-xl md:text-2xl text-gray-700 font-light mb-6">Gestión Proactiva: Siempre en Estado Óptimo.</p>
+<p class="text-sm md:text-base text-gray-500 font-light">Implementamos planes de servicio que anticipan el desgaste, manteniendo la piedra en su estado óptimo. Es una gestión proactiva para extender la vida útil y el esplendor de su patrimonio.</p>
+</div>
+</div>
+
+<div class="absolute top-1/2 -translate-y-1/2 w-full hidden md:flex justify-between px-4">
+<button
+onclick="scrollCarousel(-1)"
+aria-label="Anterior"
+class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
+>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+</button>
+<button
+onclick="scrollCarousel(1)"
+aria-label="Siguiente"
+class="p-3 bg-gray-200/50 rounded-full text-black hover:bg-gray-300 transition-all duration-200"
+>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+</button>
+</div>
+</div>
+</section>
 <section class="py-24 md:py-40 border-t border-gray-200" style="background-color: var(--color-light);">
 <div class="container mx-auto max-w-6xl px-4">
 <h2 class="text-center mb-20 px-4 font-extrabold tracking-tight" style="color: var(--color-dark);">
@@ -386,51 +449,6 @@ aria-label="Contactar por WhatsApp"
 <svg class="w-7 h-7" style="color: var(--color-light);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.255.949c-1.238.503-2.335 1.236-3.356 2.258-1.688 1.694-2.637 3.957-2.637 6.383 0 1.564.32 3.085.94 4.516l-.999 3.648 3.742-.981c1.305.756 2.814 1.176 4.514 1.176h.004c5.374 0 9.737-4.363 9.737-9.737 0-2.605-.505-5.05-1.493-7.413-1.028-2.57-2.675-4.893-4.885-6.572-2.449-1.909-5.501-2.955-8.66-2.955"/></svg>
 </a>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "STONKER",
-  "description": "Servicios especializados de preservación patrimonial de lujo y restauración de superficies",
-  "url": "https://stonker.com",
-  "telephone": "+525619997695",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "MX"
-  },
-  "sameAs": [
-    "https://wa.me/525619997695"
-  ],
-  "service": [
-    {
-      "@type": "Service",
-      "name": "Limpieza Fina",
-      "description": "Limpieza profunda y delicada de superficies"
-    },
-    {
-      "@type": "Service",
-      "name": "Limpieza Industrial",
-      "description": "Eliminación de residuos y contaminantes"
-    },
-    {
-      "@type": "Service",
-      "name": "Mármoles y Granitos",
-      "description": "Tratamiento especializado de piedra natural"
-    },
-    {
-      "@type": "Service",
-      "name": "Desbastado y Pulido",
-      "description": "Restauración del brillo y acabado espejo"
-    },
-    {
-      "@type": "Service",
-      "name": "Sellado de Superficies",
-      "description": "Protección duradera con nanotecnología"
-    }
-  ]
-}
-</script>
-
 <script>
 // Lógica de Smooth Scroll para el logo STONKER
 document.getElementById('stonker-logo').addEventListener('click', (e) => {
@@ -438,7 +456,7 @@ document.getElementById('stonker-logo').addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Lógica para cambiar solo el fondo del header (el logo ya es fijo)
+// Lógica para cambiar solo el fondo del header 
 const header = document.querySelector('.fixed-header');
 const heroSection = document.getElementById('inicio');
 
@@ -462,18 +480,16 @@ window.addEventListener('load', toggleHeaderBackground);
 window.addEventListener('scroll', toggleHeaderBackground);
 
 
-// Lógica de Navegación del Carrusel (Se mantuvo si en el futuro decides usarlo)
+// Lógica de Navegación del Carrusel
 function scrollCarousel(direction) {
 const carousel = document.getElementById('pillars-carousel');
 if (!carousel) return;
 
-const item = carousel.querySelector('.carousel-item');
-if (!item) return;
-
-const itemWidth = carousel.offsetWidth * 0.90;
+// Calcular el ancho de un elemento más el margen (16px * 2)
+const itemWidth = carousel.offsetWidth * 0.90 + 32;
 
 carousel.scrollBy({
-left: direction * itemWidth + (direction * 32), 
+left: direction * itemWidth, 
 behavior: 'smooth'
 });
 }
