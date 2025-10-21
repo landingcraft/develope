@@ -99,15 +99,41 @@ section h2 {
 
 /* Estilo del Header Fijo */
 .fixed-header {
-  /* Fondo blanco y borde sutil por defecto para que contraste bien con el logo oscuro */
-  background-color: var(--color-light); 
-  border-bottom: 1px solid #E5E7EB;
+  /* Se eliminan los colores fijos. Se usarán clases y JS para el control */
+  transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  background-color: transparent; 
+  border-bottom: none;
 }
 
-/* Estilo para el logo fijo: Color Oscuro */
+/* Clase para el estado transparente inicial (sobre el video) */
+.transparent-header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+}
+
+/* ** ESTILOS DINÁMICOS DEL LOGO ** */
+
+/* 1. Estado inicial por defecto: Blanco (sobre el video oscuro) */
 #stonker-logo {
-    color: var(--color-dark); /* Color fijo oscuro para buen contraste en fondo blanco */
-    transition: none; /* Eliminamos la transición */
+    color: var(--color-light); 
+    transition: color 0.3s ease-in-out; 
+}
+
+/* 2. Logo Blanco (sobre el video) - Refuerza el estado transparente */
+.transparent-header #stonker-logo {
+  color: var(--color-light) !important;
+}
+
+/* 3. Logo Oscuro (al hacer scroll, sobre el fondo blanco) - EL CONTRASTE DESEADO */
+/* Esta clase se añade por JS al hacer scroll */
+.scrolled-header #stonker-logo {
+  color: var(--color-dark) !important;
+}
+
+/* Clase para el estado Scrolled (header blanco, borde gris) */
+.scrolled-header {
+    background-color: var(--color-light) !important;
+    border-bottom: 1px solid #E5E7EB !important;
 }
 
 /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
@@ -163,12 +189,12 @@ section h2 {
 </head>
 <body>
 
-<header class="fixed-header fixed top-0 left-0 w-full z-50 flex items-center">
+<header class="fixed-header fixed top-0 left-0 w-full z-50 flex items-center transparent-header">
 <div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start pt-6 pb-4">
 <a
 href="#inicio"
 id="stonker-logo"
-class="text-2xl font-black tracking-tighter cursor-pointer no-underline"
+class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300 no-underline"
 aria-label="Ir al inicio - STONKER"
 >
 STONKER
@@ -425,7 +451,31 @@ document.getElementById('stonker-logo').addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Lógica de Navegación del Carrusel
+// Lógica para cambiar el color del header y logo al hacer scroll
+const header = document.querySelector('.fixed-header');
+const heroSection = document.getElementById('inicio');
+
+function toggleHeaderBackground() {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+  // Si la parte inferior de la sección hero ha pasado por encima del punto de scroll (50px)
+  if (heroBottom < 50) { 
+    // Entramos en la zona de contenido (fondo blanco)
+    header.classList.remove('transparent-header');
+    header.classList.add('scrolled-header');
+  } else {
+    // Estamos sobre la sección hero (video oscuro)
+    header.classList.add('transparent-header');
+    header.classList.remove('scrolled-header');
+  }
+}
+
+// Ejecutar al cargar y al hacer scroll
+window.addEventListener('load', toggleHeaderBackground);
+window.addEventListener('scroll', toggleHeaderBackground);
+
+
+// Lógica de Navegación del Carrusel (Se mantuvo si en el futuro decides usarlo)
 function scrollCarousel(direction) {
 const carousel = document.getElementById('pillars-carousel');
 if (!carousel) return;
@@ -440,9 +490,6 @@ left: direction * itemWidth + (direction * 32),
 behavior: 'smooth'
 });
 }
-
-// ** SE ELIMINÓ la función toggleHeaderBackground ya que el header es fijo en color y diseño. **
-// ** SE ELIMINÓ la llamada a los eventos 'load' y 'scroll' para el cambio de header. **
 </script>
 </body>
 </html>
