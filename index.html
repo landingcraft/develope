@@ -111,12 +111,20 @@ section h2 {
   border-bottom: none !important;
 }
 
-/* *** AJUSTE CRÍTICO: Logo blanco sobre el video oscuro *** */
+/* *** REFUERZO DE ESTILOS DE LOGO AQUÍ *** */
+
+/* 1. ESTADO POR DEFECTO DEL LOGO (Blanco, sobre el video) */
+#stonker-logo {
+    color: var(--color-light); 
+    transition: color 0.3s ease-in-out; /* Aseguramos la transición de color */
+}
+
+/* 2. LOGO BLANCO (Estado Transparente/Inicial) */
 .transparent-header #stonker-logo {
   color: var(--color-light) !important;
 }
 
-/* *** AJUSTE CRÍTICO: Logo negro sobre el fondo blanco (al hacer scroll) *** */
+/* 3. LOGO NEGRO (Estado con Scroll, fondo blanco) */
 .fixed-header:not(.transparent-header) #stonker-logo {
   color: var(--color-dark) !important;
 }
@@ -413,15 +421,18 @@ const header = document.querySelector('.fixed-header');
 const heroSection = document.getElementById('inicio');
 
 function toggleHeaderBackground() {
+  // Distancia del fondo del hero al tope de la ventana
   const heroBottom = heroSection.getBoundingClientRect().bottom;
 
   if (heroBottom < 50) { 
+    // Cuando el video ha subido (scroll hacia abajo):
     // Fondo blanco, logo negro
     header.classList.remove('transparent-header');
     header.style.backgroundColor = 'var(--color-light)';
     header.style.borderBottom = '1px solid #E5E7EB';
   } else {
-    // Fondo transparente (video oscuro), logo blanco
+    // Cuando estamos en la sección del video:
+    // Fondo transparente, logo blanco
     header.classList.add('transparent-header');
     header.style.backgroundColor = 'transparent';
     header.style.borderBottom = 'none';
