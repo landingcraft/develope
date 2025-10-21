@@ -154,14 +154,16 @@ section h2 {
 
 <header class="fixed-header fixed top-0 left-0 w-full z-50 flex items-center transparent-header">
 <div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start pt-6 pb-4">
-<div
+<!-- Cambiar div a enlace para mejor semántica y funcionalidad -->
+<a
+href="#inicio"
 id="stonker-logo"
-class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300"
+class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300 no-underline"
 style="color: var(--color-dark);"
 aria-label="Ir al inicio"
 >
 STONKER
-</div>
+</a>
 </div>
 </header>
 
@@ -347,7 +349,8 @@ aria-label="Contactar por WhatsApp"
 
 <script>
 // Lógica de Smooth Scroll para el logo STONKER
-document.getElementById('stonker-logo').addEventListener('click', () => {
+document.getElementById('stonker-logo').addEventListener('click', (e) => {
+  e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
