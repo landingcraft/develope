@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Mejorado title y agregados meta tags SEO esenciales -->
 <title>STONKER | Preservación Patrimonial de Lujo - Limpieza y Restauración de Superficies</title>
 <meta name="description" content="STONKER ofrece servicios especializados de preservación patrimonial de lujo: limpieza fina, industrial, tratamiento de mármoles y granitos, desbastado, pulido y sellado de superficies con nanotecnología.">
 <meta name="keywords" content="preservación patrimonial, limpieza de lujo, restauración de mármoles, granitos, desbastado, pulido, sellado de superficies, nanotecnología">
@@ -11,7 +10,6 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://stonker.com">
 
-<!-- Agregados Open Graph tags para redes sociales -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="STONKER | Preservación Patrimonial de Lujo">
 <meta property="og:description" content="Servicios especializados de limpieza y restauración de superficies de valor con tecnología de punta.">
@@ -19,13 +17,11 @@
 <meta property="og:url" content="https://stonker.com">
 <meta property="og:site_name" content="STONKER">
 
-<!-- Agregados Twitter Card tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="STONKER | Preservación Patrimonial de Lujo">
 <meta name="twitter:description" content="Servicios especializados de limpieza y restauración de superficies de valor.">
 <meta name="twitter:image" content="https://stonker.com/og-image.jpg">
 
-<!-- Agregados tags adicionales para SEO local -->
 <meta name="geo.region" content="MX">
 <meta name="geo.placename" content="México">
 
@@ -115,17 +111,28 @@ section h2 {
   border-bottom: none !important;
 }
 
+/* ** INICIO DE CORRECCIÓN DE VISIBILIDAD DEL LOGO ** */
+
+/* 1. Estado inicial por defecto: Blanco (sobre el video oscuro) */
+#stonker-logo {
+    color: var(--color-light); 
+    transition: color 0.3s ease-in-out; 
+}
+
+/* 2. Logo Blanco (sobre el video) - Refuerza el estado transparente */
 .transparent-header #stonker-logo {
   color: var(--color-light) !important;
 }
 
-/* Cambiar color del logo a dorado para mejor contraste sobre fondo blanco */
+/* 3. Logo Negro (al hacer scroll, sobre el fondo blanco) - ESTA ES LA REGLA QUE NECESITAS */
 .fixed-header:not(.transparent-header) #stonker-logo {
-  color: var(--color-gold) !important;
-  /* Agregar contorno negro al logo para mejor visibilidad sobre fondo blanco */
-  -webkit-text-stroke: 1.2px var(--color-dark);
-  text-stroke: 1.2px var(--color-dark);
+  color: var(--color-dark) !important;
+  /* Se elimina el text-stroke para dejar el logo simplemente negro sobre blanco */
+  -webkit-text-stroke: none; 
+  text-stroke: none;
 }
+
+/* ** FIN DE CORRECCIÓN DE VISIBILIDAD DEL LOGO ** */
 
 /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
 #pillars-carousel::-webkit-scrollbar { display: none; }
@@ -182,12 +189,10 @@ section h2 {
 
 <header class="fixed-header fixed top-0 left-0 w-full z-50 flex items-center transparent-header">
 <div class="max-w-7xl mx-auto w-full px-4 md:px-6 flex items-center justify-start pt-6 pb-4">
-<!-- Cambiar div a enlace para mejor semántica y funcionalidad -->
 <a
 href="#inicio"
 id="stonker-logo"
 class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300 no-underline"
-style="color: var(--color-dark);"
 aria-label="Ir al inicio - STONKER"
 >
 STONKER
@@ -197,7 +202,6 @@ STONKER
 
 <main>
 <div id="inicio" class="relative flex items-center justify-center text-center">
-<!-- Optimización de video: atributos para mejor rendimiento en móvil -->
 <video
 id="hero-video-bg"
 autoplay
@@ -224,7 +228,6 @@ style="background-color: var(--color-gold);"
 >
 CONSULTANOS
 </a>
-<!-- Agregada leyenda elegante "muestra gratis" debajo del botón -->
 <p class="mt-6 text-lg md:text-xl font-light tracking-wide opacity-90 animate-pulse-slow" style="color: var(--color-light);">
 Muestra gratis
 </p>
@@ -234,18 +237,42 @@ Muestra gratis
 <section class="py-24 md:py-40 border-b border-gray-200" style="background-color: var(--color-light);">
 <div class="container mx-auto max-w-6xl px-4">
 <h2 class="text-center text-sm md:text-base uppercase tracking-[0.3em] mb-14 text-gray-500 font-bold">
-CONFÍA EN LA CALIDAD Y DISCRESIÓN DE NUESTROS APLICADORES Y ARTESANOS STONKER
+NUESTROS PRINCIPIOS DE VALOR
 </h2>
-<div class="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-80">
-<img src="https://placehold.co/120x30/FFFFFF/111827?text=Firma+Arquitectura" alt="Firma de Arquitectura de Lujo - Cliente STONKER" class="h-6 md:h-10"/>
-<img src="https://placehold.co/120x30/FFFFFF/111827?text=Desarrolladora+Premium" alt="Desarrolladora Inmobiliaria Premium - Cliente STONKER" class="h-6 md:h-10"/>
-<img src="https://placehold.co/120x30/FFFFFF/111827?text=Gestión+Patrimonial" alt="Gestión Patrimonial - Cliente STONKER" class="h-6 md:h-10"/>
-<img src="https://placehold.co/120x30/FFFFFF/111827?text=Luxury+Residences" alt="Luxury Residences - Cliente STONKER" class="h-6 md:h-10 hidden sm:block"/>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mt-16">
+    <div class="flex flex-col items-center">
+        <svg class="w-16 h-16 mb-4" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        <h3 class="text-xl md:text-2xl font-extrabold tracking-tight mb-2" style="color: var(--color-dark);">
+            ATENCIÓN AL DETALLE
+        </h3>
+        <p class="text-gray-600 text-base font-light">
+            La perfección se encuentra en la ejecución meticulosa de cada paso del proceso.
+        </p>
+    </div>
+
+    <div class="flex flex-col items-center">
+        <svg class="w-16 h-16 mb-4" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3 class="text-xl md:text-2xl font-extrabold tracking-tight mb-2" style="color: var(--color-dark);">
+            CULTURA DE TRABAJO
+        </h3>
+        <p class="text-gray-600 text-base font-light">
+            Profesionalismo, discreción y el más alto estándar ético en cada proyecto.
+        </p>
+    </div>
+
+    <div class="flex flex-col items-center">
+        <svg class="w-16 h-16 mb-4" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 class="text-xl md:text-2xl font-extrabold tracking-tight mb-2" style="color: var(--color-dark);">
+            SATISFACCIÓN DEL CLIENTE
+        </h3>
+        <p class="text-gray-600 text-base font-light">
+            Nuestra meta es superar las expectativas, logrando resultados inigualables.
+        </p>
+    </div>
 </div>
 </div>
 </section>
 
-<!-- Nueva sección de servicios -->
 <section class="py-24 md:py-40" style="background-color: var(--color-soft-gray);">
 <div class="container mx-auto max-w-6xl px-4">
 <h2 class="text-center mb-6 font-extrabold tracking-tighter" style="color: var(--color-dark);">
@@ -256,7 +283,6 @@ Soluciones especializadas para la preservación y restauración de sus superfici
 </p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-<!-- Servicio 1: Limpieza Fina -->
 <div class="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
 <div class="flex justify-center mb-6">
 <svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -265,7 +291,6 @@ Soluciones especializadas para la preservación y restauración de sus superfici
 <p class="text-sm text-gray-600 font-light">Limpieza profunda y delicada de superficies</p>
 </div>
 
-<!-- Servicio 2: Limpieza Industrial -->
 <div class="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
 <div class="flex justify-center mb-6">
 <svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12M6 9a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3M6 9v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9M9 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2H9V5z"/></svg>
@@ -274,7 +299,6 @@ Soluciones especializadas para la preservación y restauración de sus superfici
 <p class="text-sm text-gray-600 font-light">Eliminación de residuos y contaminantes</p>
 </div>
 
-<!-- Servicio 3: Mármoles y Granitos -->
 <div class="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
 <div class="flex justify-center mb-6">
 <svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
@@ -283,16 +307,14 @@ Soluciones especializadas para la preservación y restauración de sus superfici
 <p class="text-sm text-gray-600 font-light">Tratamiento especializado de piedra natural</p>
 </div>
 
-<!-- Servicio 4: Desbastado y Pulido -->
 <div class="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
 <div class="flex justify-center mb-6">
-<svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10M9 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2H9V5z"/></svg>
+<svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>
 </div>
 <h3 class="text-lg font-bold mb-3" style="color: var(--color-dark);">DESBASTADO Y PULIDO</h3>
 <p class="text-sm text-gray-600 font-light">Restauración del brillo y acabado espejo</p>
 </div>
 
-<!-- Servicio 5: Sellado de Superficies -->
 <div class="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
 <div class="flex justify-center mb-6">
 <svg class="w-12 h-12" style="color: var(--color-gold);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -364,7 +386,6 @@ INICIAR CONSULTA
 </div>
 </footer>
 
-<!-- Botón WhatsApp con icono real de WhatsApp en color dorado -->
 <a
 href="https://wa.me/525619997695"
 target="_blank"
@@ -376,7 +397,6 @@ aria-label="Contactar por WhatsApp"
 <svg class="w-7 h-7" style="color: var(--color-light);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.255.949c-1.238.503-2.335 1.236-3.356 2.258-1.688 1.694-2.637 3.957-2.637 6.383 0 1.564.32 3.085.94 4.516l-.999 3.648 3.742-.981c1.305.756 2.814 1.176 4.514 1.176h.004c5.374 0 9.737-4.363 9.737-9.737 0-2.605-.505-5.05-1.493-7.413-1.028-2.57-2.675-4.893-4.885-6.572-2.449-1.909-5.501-2.955-8.66-2.955"/></svg>
 </a>
 
-<!-- Agregado Schema.org structured data (JSON-LD) para SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
