@@ -116,13 +116,16 @@ section h2 {
     border-bottom: 1px solid #E5E7EB !important;
 }
 
-/* ** ESTILOS DEFINITIVOS DEL LOGO (DORADO FIJO) ** */
-
-/* Fijamos el color del logo a Dorado, eliminando la lógica dinámica de color
-   Esto garantiza que siempre sea visible sobre el fondo oscuro y el fondo blanco. */
+/* Logo STONKER ahora es dinámico - cambia de color según el scroll */
 #stonker-logo {
-    color: var(--color-gold) !important; 
-    transition: none; /* No necesita transición de color ya que es fijo */
+    color: var(--color-light); /* Blanco por defecto (sobre el video) */
+    transition: color 0.3s ease-in-out; /* Transición suave del color */
+    cursor: pointer;
+}
+
+/* Cuando el header hace scroll, el logo cambia a dorado */
+#stonker-logo.scrolled {
+    color: var(--color-gold) !important;
 }
 
 /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
@@ -450,35 +453,32 @@ aria-label="Contactar por WhatsApp"
 </a>
 
 <script>
-// Lógica de Smooth Scroll para el logo STONKER
-document.getElementById('stonker-logo').addEventListener('click', (e) => {
+const logo = document.getElementById('stonker-logo');
+const heroSection = document.getElementById('inicio');
+
+// Hacer que el logo sea clickeable para ir al inicio
+logo.addEventListener('click', (e) => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Lógica para cambiar solo el fondo del header 
-const header = document.querySelector('.fixed-header');
-const heroSection = document.getElementById('inicio');
-
-function toggleHeaderBackground() {
+// Función para actualizar el color del logo según el scroll
+function updateLogoColor() {
   const heroBottom = heroSection.getBoundingClientRect().bottom;
 
   // Si la parte inferior de la sección hero ha pasado por encima del punto de scroll (50px)
   if (heroBottom < 50) { 
-    // Entramos en la zona de contenido (fondo blanco)
-    header.classList.remove('transparent-header');
-    header.classList.add('scrolled-header');
+    // Estamos en la zona de contenido (fondo blanco), logo dorado
+    logo.classList.add('scrolled');
   } else {
-    // Estamos sobre la sección hero (video oscuro), header transparente
-    header.classList.add('transparent-header');
-    header.classList.remove('scrolled-header');
+    // Estamos sobre la sección hero (video oscuro), logo blanco
+    logo.classList.remove('scrolled');
   }
 }
 
 // Ejecutar al cargar y al hacer scroll
-window.addEventListener('load', toggleHeaderBackground);
-window.addEventListener('scroll', toggleHeaderBackground);
-
+window.addEventListener('load', updateLogoColor);
+window.addEventListener('scroll', updateLogoColor);
 
 // Lógica de Navegación del Carrusel
 function scrollCarousel(direction) {
