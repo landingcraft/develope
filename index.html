@@ -36,7 +36,7 @@
 
   --color-light: #FFFFFF;
   --color-dark: #111827;
-  --color-gold: #B8860B;
+  --color-gold: #B8860B; /* Color ámbar/dorado para el logo fijo */
   --color-soft-gray: #F3F4F6;
 }
 
@@ -99,7 +99,6 @@ section h2 {
 
 /* Estilo del Header Fijo */
 .fixed-header {
-  /* Se eliminan los colores fijos. Se usarán clases y JS para el control */
   transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
   background-color: transparent; 
   border-bottom: none;
@@ -111,29 +110,19 @@ section h2 {
   border-bottom: none !important;
 }
 
-/* ** ESTILOS DINÁMICOS DEL LOGO ** */
-
-/* 1. Estado inicial por defecto: Blanco (sobre el video oscuro) */
-#stonker-logo {
-    color: var(--color-light); 
-    transition: color 0.3s ease-in-out; 
-}
-
-/* 2. Logo Blanco (sobre el video) - Refuerza el estado transparente */
-.transparent-header #stonker-logo {
-  color: var(--color-light) !important;
-}
-
-/* 3. Logo Oscuro (al hacer scroll, sobre el fondo blanco) - EL CONTRASTE DESEADO */
-/* Esta clase se añade por JS al hacer scroll */
-.scrolled-header #stonker-logo {
-  color: var(--color-dark) !important;
-}
-
 /* Clase para el estado Scrolled (header blanco, borde gris) */
 .scrolled-header {
     background-color: var(--color-light) !important;
     border-bottom: 1px solid #E5E7EB !important;
+}
+
+/* ** ESTILOS DEFINITIVOS DEL LOGO ** */
+
+/* Fijamos el color del logo a Dorado, eliminando la lógica dinámica de color
+   Esto garantiza que siempre sea visible sobre el fondo oscuro y el fondo blanco. */
+#stonker-logo {
+    color: var(--color-gold) !important; 
+    transition: none; /* No necesita transición de color ya que es fijo */
 }
 
 /* Ocultar scrollbar en carrusel para una apariencia más limpia en navegadores */
@@ -194,7 +183,7 @@ section h2 {
 <a
 href="#inicio"
 id="stonker-logo"
-class="text-2xl font-black tracking-tighter cursor-pointer transition-colors duration-300 no-underline"
+class="text-2xl font-black tracking-tighter cursor-pointer no-underline"
 aria-label="Ir al inicio - STONKER"
 >
 STONKER
@@ -449,7 +438,7 @@ document.getElementById('stonker-logo').addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Lógica para cambiar el color del header y logo al hacer scroll
+// Lógica para cambiar solo el fondo del header (el logo ya es fijo)
 const header = document.querySelector('.fixed-header');
 const heroSection = document.getElementById('inicio');
 
@@ -462,7 +451,7 @@ function toggleHeaderBackground() {
     header.classList.remove('transparent-header');
     header.classList.add('scrolled-header');
   } else {
-    // Estamos sobre la sección hero (video oscuro)
+    // Estamos sobre la sección hero (video oscuro), header transparente
     header.classList.add('transparent-header');
     header.classList.remove('scrolled-header');
   }
