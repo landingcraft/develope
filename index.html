@@ -25,6 +25,8 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  /* Agregar overflow-x hidden para evitar desbordamiento horizontal */
+  overflow-x: hidden;
 }
 
 body {
@@ -113,17 +115,13 @@ section h2 {
 /* --- CSS PARA VIDEO DE FONDO HERO --- */
 #inicio {
   position: relative;
-  /* Usar 100vh sin padding para evitar franjas negras */
+  /* Cambiar de 100vw a 100% para evitar desbordamiento horizontal */
   height: 100vh; 
-  width: 100vw;
+  width: 100%;
   background-color: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
   overflow: hidden;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 }
 
 #hero-video-bg {
@@ -324,7 +322,7 @@ hover:opacity-90 shadow-xl shadow-amber-600/50 uppercase tracking-wider
 "
 style="background-color: var(--color-gold);"
 >
-INICIAR CONSULTA
+INICIACONSULTA
 </a>
 </div>
 </section>
