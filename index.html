@@ -456,13 +456,11 @@ aria-label="Contactar por WhatsApp"
 const logo = document.getElementById('stonker-logo');
 const heroSection = document.getElementById('inicio');
 
-// Hacer que el logo sea clickeable para ir al inicio
 logo.addEventListener('click', (e) => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Función para actualizar el color del logo según el scroll
 function updateLogoColor() {
   const heroBottom = heroSection.getBoundingClientRect().bottom;
 
